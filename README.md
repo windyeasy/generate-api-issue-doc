@@ -1,6 +1,6 @@
-<h1 align="center">vue3-ts-template</h1>
+<h1 align="center">generate-api-issue-doc</h1>
 
-一个Vue3+TS+Vite的基础项目开发模板，可以用来快速作为vue3项目搭建，减少更多的配置过程。
+通过填写表单，生成markdown关于对接接口问题文档。
 
 ## 小特性
 
@@ -43,4 +43,4 @@ git commit -m "feat: 添加一个新特性"
 
 ## License
 
-vue3-ts-template is [MIT](./LICENSE).
+generate-api-issue-doc is [MIT](./LICENSE).
