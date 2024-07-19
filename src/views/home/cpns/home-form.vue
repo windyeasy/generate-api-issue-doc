@@ -1,15 +1,8 @@
 <script lang="ts" setup>
-import type { FormRules } from 'element-plus'
-interface FormData {
-  title: string // 标题
-  api: string // 接口地址
-  method: string // 请求方式
-  query?: string // query参数
-  params?: string // params参数
-  body?: string // 请求体内容
-}
+import type { FormInstance, FormRules } from 'element-plus'
+import useMainStore from '@/store/main'
 
-const form = reactive<FormData>({
+const form = reactive<APIDocFormData>({
   title: '',
   api: '',
   method: '',
@@ -17,7 +10,9 @@ const form = reactive<FormData>({
   params: '',
   body: '',
   result: '',
+  header: '',
 })
+const formRef = ref<FormInstance>()
 const rules = reactive<FormRules>({
   title: [
     { required: true, message: '请输入标题', trigger: 'blur' },
@@ -58,18 +53,28 @@ const methodOptions = [
     value: 'OPTIONS',
   },
 ]
+const router = useRouter()
+// 去预览
+function toPreview() {
+  formRef.value?.validate(async (valid) => {
+    if (valid) {
+      useMainStore().changeFormAction(form)
+      router.push('/preview')
+    }
+  })
+}
 </script>
 
 <template>
   <div class="home-form">
-    <el-form :model="form" label-width="auto" class="w-full" :rules="rules">
-      <el-form-item label="标题" props="title">
+    <el-form ref="formRef" :model="form" label-width="auto" class="w-full" :rules="rules">
+      <el-form-item label="标题" prop="title">
         <el-input v-model="form.title" placeholder="请输入标题" />
       </el-form-item>
-      <el-form-item label="API" props="api">
+      <el-form-item label="API" prop="api">
         <el-input v-model="form.api" placeholder="请输入接口地址" />
       </el-form-item>
-      <el-form-item label="请求方式" props="method">
+      <el-form-item label="请求方式" prop="method">
         <el-select v-model="form.method" placeholder="请选择请求方式">
           <el-option
             v-for="item in methodOptions"
@@ -79,10 +84,12 @@ const methodOptions = [
           />
         </el-select>
       </el-form-item>
+      <el-form-item label="请求头">
+        <el-input v-model="form.header" type="textarea" :rows="4" placeholder="请输入头" />
+      </el-form-item>
       <el-form-item label="请求query">
         <el-input v-model="form.query" type="textarea" :rows="4" placeholder="请输入query参数" />
       </el-form-item>
-
       <el-form-item label="请求params">
         <el-input v-model="form.query" type="textarea" :rows="4" placeholder="请输入params参数" />
       </el-form-item>
@@ -93,11 +100,11 @@ const methodOptions = [
         <el-input v-model="form.result" type="textarea" :rows="4" placeholder="请输入请求结果" />
       </el-form-item>
       <el-form-item>
-        <el-row justify="end">
-          <el-button type="primary" @click="onSubmit">
+        <div class="flex justify-end w-full">
+          <el-button type="primary" @click="toPreview">
             生成
           </el-button>
-        </el-row>
+        </div>
       </el-form-item>
     </el-form>
   </div>

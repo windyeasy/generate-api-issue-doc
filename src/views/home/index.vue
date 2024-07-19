@@ -7,7 +7,7 @@ defineOptions({
 </script>
 
 <template>
-  <div id="home" class="home w1200px mx-auto">
+  <div id="home" class="home my5 w700px mx-auto">
     <HomeForm />
   </div>
 </template>
