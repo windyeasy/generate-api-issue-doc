@@ -1,56 +1,17 @@
 <script lang="ts" setup>
 import type { FormInstance, FormRules } from 'element-plus'
-import useMainStore from '@/store/main'
+import { objectToBase64 } from '@/utils/base64'
 
 const form = reactive<APIDocFormData>({
-  title: '登录接口',
-  api: '/api/login',
-  method: 'POST',
+  title: '',
+  api: '',
+  method: '',
   query: '',
   params: '',
   body: '',
-  result: `
-  {
-    "data": [
-        [
-            "v4.music.126.net"
-        ],
-        [
-            "m10.music.126.net"
-        ],
-        [
-            "v5.music.126.net"
-        ],
-        [
-            "m701.music.126.net",
-            "m801.music.126.net"
-        ],
-        [
-            "m11.music.126.net"
-        ],
-        [
-            "sv1.music.126.net",
-            "sv2.music.126.net"
-        ],
-        [
-            "m8.music.126.net",
-            "m7.music.126.net"
-        ],
-        [
-            "m1.music.126.net",
-            "m2.music.126.net"
-        ],
-        [
-            "v3.music.126.net"
-        ],
-        [
-            "m3.music.126.net"
-        ]
-    ],
-    "code": 200
-}
-  `,
+  result: '',
   header: '',
+  description: '',
 })
 const formRef = ref<FormInstance>()
 const rules = reactive<FormRules>({
@@ -98,8 +59,8 @@ const router = useRouter()
 function toPreview() {
   formRef.value?.validate(async (valid) => {
     if (valid) {
-      useMainStore().changeFormAction(form)
-      router.push('/preview')
+      const base64 = objectToBase64(form)
+      router.push(`/preview/${base64}`)
     }
   })
 }
@@ -110,6 +71,9 @@ function toPreview() {
     <el-form ref="formRef" :model="form" label-width="auto" class="w-full" :rules="rules">
       <el-form-item label="标题" prop="title">
         <el-input v-model="form.title" placeholder="请输入标题" />
+      </el-form-item>
+      <el-form-item label="描述">
+        <el-input v-model="form.description" type="textarea" :rows="4" placeholder="请输入描述" />
       </el-form-item>
       <el-form-item label="API" prop="api">
         <el-input v-model="form.api" placeholder="请输入接口地址" />

@@ -1,8 +1,17 @@
 <script lang="ts" setup>
 import { MdPreview } from 'md-editor-v3'
 import useMainStore from '@/store/main'
+import { base64ToObject } from '@/utils/base64'
 
-const { doc } = useMainStore()
+const mainStore = useMainStore()
+const route = useRoute()
+const { changeFormAction } = mainStore
+onMounted(() => {
+  changeFormAction(base64ToObject<APIDocFormData>(route.params.data as string))
+})
+const doc = computed(() => {
+  return mainStore.doc
+})
 const activeName = ref('document')
 </script>
 
@@ -19,10 +28,16 @@ const activeName = ref('document')
             :code-foldable="false"
           />
         </el-tab-pane>
-        <el-tab-pane label="code" name="code">
+        <el-tab-pane label="代码" name="code">
           <show-code :code="doc" />
         </el-tab-pane>
       </el-tabs>
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.content-wrapper {
+  min-height: 100vh;
+}
+</style>

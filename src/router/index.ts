@@ -11,7 +11,7 @@ export default createRouter({
       component: () => import('@/views/home/index.vue'),
     },
     {
-      path: '/preview',
+      path: '/preview/:data',
       component: () => import('@/views/preview/index.vue'),
     },
   ],

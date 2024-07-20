@@ -7,4 +7,5 @@ interface APIDocFormData {
   body?: string // 请求体内容
   header?: string
   result?: string
+  description?: string
 }
