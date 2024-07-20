@@ -1,6 +1,6 @@
 <h1 align="center">generate-api-issue-doc</h1>
 
-通过填写表单，生成markdown关于对接接口问题文档。会生成一个base64的连接地址，通过浏览器打开即可查看。
+在接口对接的过程中生成错误信息接口文档，通过base64转码生成一个连接直接发送给接口对接人，可以直接查看错误信息。也可以利用这个工具生成简单接口文档。
 
 ## 运行项目
 
@@ -29,6 +29,16 @@ pnpm run commit
 ```shell
 git commit -m "feat: 添加一个新特性"
 ```
+
+## 预览
+
+预览地址(https://windyeasy.github.io/generate-api-issue-doc/#/home)
+- 填写表单：
+![](./docs/0.png)
+- 查看文档：
+![](./docs/1.png)
+- 查看markdown的代码：
+![](./docs/2.png)
 
 ## License
 
