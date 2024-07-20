@@ -8,6 +8,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/generate-api-issue-doc',
   plugins: [
     vue(),
     UnoCSS(),
