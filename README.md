@@ -1,17 +1,6 @@
 <h1 align="center">generate-api-issue-doc</h1>
 
-通过填写表单，生成markdown关于对接接口问题文档。
-
-## 小特性
-
-1. 集成ESlint使用[@antfu/eslint-config](https://github.com/antfu/eslint-config)可自动格式化代码文件
-2. 集成了[unplugin-auto-components](https://github.com/unplugin/unplugin-vue-components)自动导入组件
-3. 集成了[unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import)通过配置规则自动导入模块
-4. 集成了[unocss](https://github.com/unocss/unocss)一个原子化CSS引擎
-5. 状态管理Pinia
-6. 基于axios封装了网络请求
-7. 集成scss
-8. 区分了开发环境和生产环境
+通过填写表单，生成markdown关于对接接口问题文档。会生成一个base64的连接地址，通过浏览器打开即可查看。
 
 ## 运行项目
 
