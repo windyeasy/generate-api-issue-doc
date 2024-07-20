@@ -3,13 +3,53 @@ import type { FormInstance, FormRules } from 'element-plus'
 import useMainStore from '@/store/main'
 
 const form = reactive<APIDocFormData>({
-  title: '',
-  api: '',
-  method: '',
+  title: '登录接口',
+  api: '/api/login',
+  method: 'POST',
   query: '',
   params: '',
   body: '',
-  result: '',
+  result: `
+  {
+    "data": [
+        [
+            "v4.music.126.net"
+        ],
+        [
+            "m10.music.126.net"
+        ],
+        [
+            "v5.music.126.net"
+        ],
+        [
+            "m701.music.126.net",
+            "m801.music.126.net"
+        ],
+        [
+            "m11.music.126.net"
+        ],
+        [
+            "sv1.music.126.net",
+            "sv2.music.126.net"
+        ],
+        [
+            "m8.music.126.net",
+            "m7.music.126.net"
+        ],
+        [
+            "m1.music.126.net",
+            "m2.music.126.net"
+        ],
+        [
+            "v3.music.126.net"
+        ],
+        [
+            "m3.music.126.net"
+        ]
+    ],
+    "code": 200
+}
+  `,
   header: '',
 })
 const formRef = ref<FormInstance>()

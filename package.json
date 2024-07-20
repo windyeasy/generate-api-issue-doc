@@ -21,6 +21,7 @@
     "@vueuse/core": "^10.11.0",
     "axios": "^1.6.7",
     "element-plus": "^2.7.7",
+    "md-editor-v3": "^4.17.4",
     "normalize.css": "^8.0.1",
     "pinia": "^2.1.7",
     "sass": "^1.71.0",

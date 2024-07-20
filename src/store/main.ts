@@ -43,8 +43,8 @@ const useMainStore = defineStore('Main', {
       const resultTem = checkJsonValueGenTem('请求结果', this.form.result)
 
       this.doc = `### ${this.form.title}\n\n`
-      + `##### 接口地址：\`${this.form.api}\`\n\n`
-      + `##### 请求方式：\`${this.form.method}\`\n\n${headTem}${queryTem}${paramsTem}${bodyTem}${resultTem}`
+      + `#### 接口地址：\`${this.form.api}\`\n\n`
+      + `#### 请求方式：\`${this.form.method}\`\n\n${headTem}${queryTem}${paramsTem}${bodyTem}${resultTem}`
     },
   },
 })
