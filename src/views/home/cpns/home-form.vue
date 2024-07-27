@@ -60,7 +60,12 @@ function toPreview() {
   formRef.value?.validate(async (valid) => {
     if (valid) {
       const base64 = objectToBase64(form)
-      router.push(`/preview/${base64}`)
+      router.push({
+        path: `/preview`,
+        query: {
+          data: base64,
+        },
+      })
     }
   })
 }

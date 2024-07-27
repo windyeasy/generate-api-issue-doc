@@ -7,7 +7,8 @@ const mainStore = useMainStore()
 const route = useRoute()
 const { changeFormAction } = mainStore
 onMounted(() => {
-  changeFormAction(base64ToObject<APIDocFormData>(route.params.data as string))
+  const data = base64ToObject<APIDocFormData>(route.query.data as string)
+  changeFormAction(data)
 })
 const doc = computed(() => {
   return mainStore.doc
